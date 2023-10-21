@@ -117,5 +117,13 @@ Route::group(['prefix' => config('master.url.admin')], function () {
             Route::get('/hapus/{id}', 'fotoController@hapus');
         });
         Route::resource('foto', 'fotoController');
+
+        // berita
+        Route::prefix('berita')->as('berita')->group(function () {
+            Route::get('/data', 'beritaController@data');
+            Route::get('/hapus/{id}', 'beritaController@hapus');
+        });
+        Route::resource('berita', 'beritaController');
+
     });
 });

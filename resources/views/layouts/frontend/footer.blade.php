@@ -4,14 +4,17 @@
       class="container-fluid bg-secondary text-white mt-5 py-5 px-sm-3 px-md-5"
     >
       <div class="row pt-5">
-        <div class="col-lg-3 col-md-6 mb-5">
+        <div class="col-lg-6 col-md-6 mb-5">
           <a
             href=""
             class="navbar-brand font-weight-bold text-primary m-0 mb-4 p-0"
             style="font-size: 40px; line-height: 40px"
           >
-            <i class="flaticon-043-teddy-bear"></i>
-            <span class="text-white">{{$aplikasi->singkatan}}</span>
+          <img
+              src="{{ $aplikasi->file_logo?asset($aplikasi->file_logo->url_stream):asset($aplikasi->file_favicon->url_stream) }}"
+              class="img-fluid"
+              style="height: 60px"
+            />
           </a>
           <p>
           {{$aplikasi->nama.' '.$aplikasi->daerah}}
@@ -44,7 +47,7 @@
           </div>
         </div>
         <div class="col-lg-3 col-md-6 mb-5">
-          <h3 class="text-primary mb-4">Get In Touch</h3>
+          <h3 class="text-primary mb-4">Hubungi Kami</h3>
           <div class="d-flex">
             <h4 class="fa fa-map-marker-alt text-primary"></h4>
             <div class="pl-3">
@@ -68,29 +71,17 @@
           </div>
         </div>
         <div class="col-lg-3 col-md-6 mb-5">
-          <h3 class="text-primary mb-4">Quick Links</h3>
+          <h3 class="text-primary mb-4">Link Terkait</h3>
           <div class="d-flex flex-column justify-content-start">
-            <a class="text-white mb-2" href="#"
-              ><i class="fa fa-angle-right mr-2"></i>Home</a
+            <a class="text-white mb-2" href="https://bengkaliskab.go.id/"
+              ><i class="fa fa-angle-right mr-2"></i>Website Bengkalis</a
             >
-            <a class="text-white mb-2" href="#"
-              ><i class="fa fa-angle-right mr-2"></i>About Us</a
-            >
-            <a class="text-white mb-2" href="#"
-              ><i class="fa fa-angle-right mr-2"></i>Our Classes</a
-            >
-            <a class="text-white mb-2" href="#"
-              ><i class="fa fa-angle-right mr-2"></i>Our Teachers</a
-            >
-            <a class="text-white mb-2" href="#"
-              ><i class="fa fa-angle-right mr-2"></i>Our Blog</a
-            >
-            <a class="text-white" href="#"
-              ><i class="fa fa-angle-right mr-2"></i>Contact Us</a
+            <a class="text-white mb-2" href="http://www.rsudbengkalis.com/"
+              ><i class="fa fa-angle-right mr-2"></i>Website RSUD Bengkalis</a
             >
           </div>
         </div>
-        <div class="col-lg-3 col-md-6 mb-5">
+        <!-- <div class="col-lg-3 col-md-6 mb-5">
           <h3 class="text-primary mb-4">Newsletter</h3>
           <form action="">
             <div class="form-group">
@@ -118,7 +109,7 @@
               </button>
             </div>
           </form>
-        </div>
+        </div> -->
       </div>
       <div
         class="container-fluid pt-5"

@@ -7,11 +7,13 @@
 		<a href="{{url('/home')}}" class="logo">
 		  <!-- logo-->
 		  <div class="logo-lg">
+			@if($aplikasi->file_logo || $aplikasi->file_favicon)
 		  	  <span class="light-logo"><img src="{{ $aplikasi->file_logo?asset($aplikasi->file_logo->url_stream):asset($aplikasi->file_favicon->url_stream) }}" height="40px" class="text-left" alt="logo"> {{$aplikasi->file_logo?'':$aplikasi->singkatan}}</span>
 			  <span class="dark-logo"><img src="{{ $aplikasi->file_logo?asset($aplikasi->file_logo->url_stream):asset($aplikasi->file_favicon->url_stream) }}" height="40px" class="text-left" alt="logo"> {{$aplikasi->file_logo?'':$aplikasi->singkatan}}</span>
-			  
-			  <!-- <span class="light-logo"><img src="{{url('backend/images/logo-light-text.png')}}" alt="logo"></span>
-			  <span class="dark-logo"><img src="{{url('backend/images/logo-light-text.png')}}" alt="logo"></span> -->
+			@else
+			  <span class="light-logo">{{$aplikasi->singkatan}}</span>
+			  <span class="dark-logo">{{$aplikasi->singkatan}}</span>
+			@endif
 		  </div>
 		</a>	
 	</div>  

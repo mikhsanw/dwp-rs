@@ -8,8 +8,16 @@
           class="navbar-brand font-weight-bold text-secondary"
           style="font-size: 50px"
         >
-          <i class="flaticon-043-teddy-bear"></i>
-          <span class="text-primary">{{$aplikasi->nama}}</span>
+          <!-- <i class="flaticon-043-teddy-bear"></i> -->
+          
+            @if($aplikasi->file_logo || $aplikasi->file_favicon)
+            <img
+              src="{{ $aplikasi->file_logo?asset($aplikasi->file_logo->url_stream):asset($aplikasi->file_favicon->url_stream) }}"
+              class="img-fluid"
+              style="height: 60px"
+            />
+            @endif
+          
         </a>
         <button
           type="button"

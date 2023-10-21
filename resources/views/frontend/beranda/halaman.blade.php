@@ -1,35 +1,32 @@
 @extends('layouts.frontend.main')
 @section('title', $data->nama)
-@section('img', asset($aplikasi->file_logo->url_stream))
+@section('img', ($aplikasi->file_logo?asset($aplikasi->file_logo->url_stream):''))
 @section('content')
-<section class="page-title title-bg22">
-    <div class="d-table">
-        <div class="d-table-cell">
-            <h2>{{$data->nama}}</h2>
-            <ul>
-                <li>
-                    <a href="{{url('/')}}">Beranda</a>
-                </li>
-                @if($data->parentRecursive)
-                {!!$data->createMenuTree($data->parentRecursive)!!}
-                <li>{{$data->nama}}</li>
-                @else
-                <li>{{$data->nama}}</li>
-
-                @endif
-            </ul>
-        </div>
+<!-- Header Start -->
+<div class="container-fluid bg-primary mb-5">
+    <div
+    class="d-flex flex-column align-items-center justify-content-center"
+    style="min-height: 300px"
+    >
+    <h3 class="display-3 font-weight-bold text-white">{{$data->nama}}</h3>
+    <div class="d-inline-flex text-white">
+        <p class="m-0"><a class="text-white" href="{{url('/')}}">Beranda</a></p>
+        <p class="m-0 px-2">/</p>
+        <p class="m-0">{{$data->nama}}</p>
     </div>
-    <div class="lines">
-        <div class="line"></div>
-        <div class="line"></div>
-        <div class="line"></div>
     </div>
-</section>
+</div>
+<!-- Header End -->
 
 @if($data->status==4)
-<section class="categories-section faq-section pt-5 pb-70">
+<div class="container-fluid pt-5">
     <div class="container">
+        <div class="text-center pb-2">
+          <p class="section-title px-5">
+            <span class="px-2">Halaman</span>
+          </p>
+          <h1 class="mb-4">{{$data->nama}}</h1>
+        </div>
         <div class="row">
             @foreach($data->children as $item)
             @if($item->status=='1')
@@ -77,10 +74,10 @@
             @endforeach
         </div>
     </div>
-</section>
+</div>
 
 @elseif($data->status==3)
-<section class="job-style-two job-list-section pt-4 pb-70">
+<div class="container-fluid pt-5">
     <div class="container">
         <div class="section-title text-center">
             <h3>Daftar Dokumen {{$data->nama}}</h3>
@@ -110,9 +107,9 @@
             </div>
         </div>
     </div>
-</section>
+</div>
 @else
-<section class="contact-form-section pt-5 pb-70">
+<div class="container-fluid pt-3">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-lg-12 col-md-10">
@@ -153,7 +150,7 @@
                 </object>
                 @elseif($data->file->extension=='jpg' || $data->file->extension=='png')
                 <p>
-                    <img src="{{$data->file->url_stream.'?t='.time() ?? '#'}}" />
+                    <img width="100%" src="{{$data->file->url_stream.'?t='.time() ?? '#'}}" />
                 </p>
                 @else
                 <p>
@@ -169,7 +166,7 @@
             </div>
         </div>
     </div>
-</section><!-- #content end -->
+</div><!-- #content end -->
 @endif
 
 <div class="modal fade" id="dokumen-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"

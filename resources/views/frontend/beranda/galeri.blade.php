@@ -2,53 +2,39 @@
 @section('title', 'Galeri '.$jenis)
 @section('img', asset($aplikasi->file_logo->url_stream))
 @section('content')
-<section class="page-title title-bg22">
-    <div class="d-table">
-        <div class="d-table-cell">
-            <h2>Galeri {{$jenis}}</h2>
-            <ul>
-                <li>
-                    <a href="{{url('/')}}">Beranda</a>
-                </li>
-                <li>Galeri</li>
-                <li>{{$jenis}}</li>
-            </ul>
-        </div>
+<!-- Header Start -->
+<div class="container-fluid bg-primary mb-5">
+    <div
+    class="d-flex flex-column align-items-center justify-content-center"
+    style="min-height: 300px"
+    >
+    <h3 class="display-3 font-weight-bold text-white">Galeri</h3>
+    <div class="d-inline-flex text-white">
+        <p class="m-0"><a class="text-white" href="{{url('/')}}">Beranda</a></p>
+        <p class="m-0 px-2">/</p>
+        <p class="m-0">Galeri</p>
     </div>
-    <div class="lines">
-        <div class="line"></div>
-        <div class="line"></div>
-        <div class="line"></div>
-    </div>
-</section>
-
-<div class="contact-form-section pt-5 pb-70 lightbox-gallery">
-    <div class="container">
-        <div class="intro">
-            <!-- <h2 class="text-center">Galeri {{$jenis}}</h2> -->
-        </div>
-        <div class="row photos">
-			@if($jenis==='foto')
-			@foreach($data as $foto)
-            <div class="col-sm-6 col-md-4 col-lg-3 item">
-				<a href="{{$foto->file->url_stream}}" data-caption="{{$foto->nama}}" data-toggle="lightbox" data-gallery="example-gallery">
-					<img class="img-fluid" src="{{$foto->file->url_stream}}"></a>
-			</div>
-			@endforeach
-			@elseif($jenis==='video')
-			@foreach($data as $video)
-			<div class="col-sm-6 col-md-4 col-lg-3 item">
-				<a href="//www.youtube.com/embed/{{$video->link}}" data-toggle="lightbox" data-gallery="youtubevideos">
-					<img src="https://i1.ytimg.com/vi/{{$video->link}}/mqdefault.jpg" class="img-fluid">
-				</a>
-			</div>
-			@endforeach
-			@endif
-         </div>
     </div>
 </div>
-<div style="text-align: center;">{{$data->links()}} </div>
+<!-- Header End -->
+<!-- Gallery Start -->
+<div class="container-fluid pt-5" style="padding-bottom:12rem">
+    <div class="container">
+        <div class="row portfolio-container">
+        @foreach($data as $foto)
+        <div class="col-lg-4 col-md-6 portfolio-item ">
+            <div class="position-relative overflow-hidden mb-2">
+            <img class="img-fluid w-100" src="{{$foto->file->url_stream}}" alt="" />
+            <div class="portfolio-btn bg-primary d-flex align-items-center justify-content-center">
+                <a href="{{$foto->file->url_stream}}" data-lightbox="portfolio">
+                <i class="fa fa-plus text-white" style="font-size: 60px"></i>
+                </a>
+            </div>
+            </div>
+        </div>
+        @endforeach
+        </div>
+    </div>
+</div>
+    <!-- Gallery End -->
 @endsection
-@push('js')
-<script src="{{url('/frontend/assets/js/bs5-lightbox/index.bundle.min.js')}}"></script>
-@endpush
