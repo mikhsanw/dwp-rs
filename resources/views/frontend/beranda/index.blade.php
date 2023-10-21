@@ -128,7 +128,7 @@
 <style>
   .carousel-item {
     position: relative;
-    padding-bottom: 36.25%; /* 16:9 ratio */
+    padding-bottom: 46.25%; /* 16:9 ratio */
     height: 0;
     overflow: hidden;
   }
